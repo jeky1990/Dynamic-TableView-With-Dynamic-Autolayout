@@ -13,6 +13,7 @@
 		FA207ABE2180A40E00D73953 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA207ABD2180A40E00D73953 /* Assets.xcassets */; };
 		FA207AC12180A40E00D73953 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA207ABF2180A40E00D73953 /* LaunchScreen.storyboard */; };
 		FA222A34218180DD00F23A6D /* TblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA222A33218180DD00F23A6D /* TblCell.swift */; };
+		FA222A362181DB9700F23A6D /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA222A352181DB9700F23A6D /* PageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FA207AC02180A40E00D73953 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA207AC22180A40E00D73953 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA222A33218180DD00F23A6D /* TblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TblCell.swift; sourceTree = "<group>"; };
+		FA222A352181DB9700F23A6D /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				FA207ABF2180A40E00D73953 /* LaunchScreen.storyboard */,
 				FA207AC22180A40E00D73953 /* Info.plist */,
 				FA222A33218180DD00F23A6D /* TblCell.swift */,
+				FA222A352181DB9700F23A6D /* PageViewController.swift */,
 			);
 			path = CreateDynamicTableViewWithDynamicAutoLayout;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				FA207AB92180A40B00D73953 /* ViewController.swift in Sources */,
 				FA207AB72180A40B00D73953 /* AppDelegate.swift in Sources */,
 				FA222A34218180DD00F23A6D /* TblCell.swift in Sources */,
+				FA222A362181DB9700F23A6D /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

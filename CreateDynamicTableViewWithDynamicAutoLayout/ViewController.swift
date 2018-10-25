@@ -11,12 +11,14 @@ import UIKit
 class ViewController: UIViewController {
     
     let Tbl = UITableView()
+    let NavigationBar = UINavigationBar()
     var arr = [1,2,3,4,5,6,7]
     var titleArr = ["We all know how hard it can be to make a site look like the demo, so to make your start into the world of X as easy as possible we have included the demo content from our showcase site. Simply import the sample files we ship with the theme and the core structure for your site is already built. Keep in mind that even if you don’t use the demo content, you’ll be much better off than with most other themes since all of the customization options are done right from within the WordPress Customizer making it super easy to configure your site as compared to most of the typical admin panels. You will be pleasantly surprised how easy it is to setup and configure your site with X – with or without the demo content.","We all know how hard it can be to make a site look like the demo, so to make your start into the world of X as easy as possible we have included the demo content from our showcase site. Simply import the sample files we ship with the theme and the core structure for your site is already built. Keep in mind.","We all know how hard it can be to make a site look like the demo, so to make your start into the world of X as easy as possible we have included the demo content from our showcase site. Simply import the sample files we ship with the theme and the core structure for your site is already built. Keep in mind that even if you don’t use the demo content, you’ll be much better off than with most other themes since all of the cus content.","We all know how hard it can be to make a site look like the demo, so to make your start into the world of X as easy as possible we have included the demo content from our showcase site. Simply import the sample files we ship with the theme and the core structure for your site is already built. Keep in mind that even if you don’t use the demo content, you’ll be much better off than with most other themes since to most of the typical admin panels. You will be pleasantly surprised how easy it is to setup and configure your site with X – with or without the demo content.","We all know how hard it can be to make a site look like the demo, so to make your start into the world of X as easy as possible we have included the demo content from our showcase site. Simply import the sample files we ship with the theme and the core structure for your site is already built. Keep in are done right from within the WordPress Customizer making it super easy to configure your site as compared to most of the typical admin panels. You will be pleasantly surprised how easy it is to setup and configure your site with X – with or without the demo content.","We all know how hard it can be to make a site look like the demo, so to make your start into the world of X as easy as possible we have included the demo content from our showcase site. Simply import the sample files we ship with the theme and the core structure for your site is already built. Keep in mind that even if you don’t use the demo content, you’ll be much better off than with most t the demo content.","We all know how hard it can be to make a site look like the demo, so to make your start into the world of X as easy as possible we have included the demo content from our showcase site. Simply import the sample files we ship with the theme and the core structure options are done right from within the WordPress Customizer making it super easy to configure your site as compared to most of the typical admin panels. You will be pleasantly surprised how easy it is to setup and configure your site with X – with or without the demo content."]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        CreateNavigationBar()
         CreateTableView()
         
     }
@@ -33,10 +35,36 @@ class ViewController: UIViewController {
             
             Tbl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             Tbl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            Tbl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            Tbl.topAnchor.constraint(equalTo: NavigationBar.bottomAnchor),
             Tbl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             ])
+    }
+    
+    func CreateNavigationBar()
+    {
+        
+        let NavigationItem = UINavigationItem(title: "All Data")
+        NavigationBar.items = [NavigationItem]
+        NavigationBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        let rightbarbutton = UIBarButtonItem(title: "Page Controller", style: .plain, target: self, action: #selector(self.GotoPageController(sender:)))
+        NavigationItem.rightBarButtonItem = rightbarbutton
+        self.view.addSubview(NavigationBar)
+        
+        NSLayoutConstraint.activate([
+            
+            NavigationBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            NavigationBar.heightAnchor.constraint(equalToConstant: 50),
+            NavigationBar.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            NavigationBar.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
+            ])
+    }
+    
+    @objc func GotoPageController(sender:UIButton)
+    {
+        let nav = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController")
+        self.navigationController?.pushViewController(nav!, animated: true)
     }
 }
 
@@ -60,6 +88,9 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource
         
         cell.ThirdButton.addTarget(self, action: #selector(TapedButton), for: .touchUpInside)
         cell.ThirdButton.tag = indexPath.row
+        cell.FourthButton.tag = indexPath.row
+        
+        cell.FourthButton.addTarget(self, action: #selector(FourthButtonTapped), for: .touchUpInside)
 
         return cell
     }
@@ -77,6 +108,19 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource
             arr.remove(at: index.row)
             titleArr.remove(at: index.row)
             Tbl.reloadData()
+        }
+    }
+    
+    @objc func FourthButtonTapped(sender:UIButton)
+    {
+        let index = IndexPath(row: sender.tag, section: 0)
+        let cell = Tbl.cellForRow(at: index) as! TblCell
+        if cell.FourthButton.tag == index.row
+        {
+           let alert = UIAlertController(title: "Alert!!", message: "Cell \(index.row + 1) added successfully" , preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
